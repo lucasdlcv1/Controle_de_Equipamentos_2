@@ -50,19 +50,47 @@ O objetivo principal é solucionar a necessidade do funcionário **Junior**, que
 
 ```text
 GestaoDeEquipamentos/
-├── src/
-├── GestaoEquipamentos.ConsoleApp/
-│   ├── ModuloFabricante/
-│   │   ├── Fabricante.cs
-│   │   ├── RepositorioFabricante.cs
-│   │   └── TelaFabricante.cs
-│   ├── ModuloEquipamento/
-│   │   ├── Equipamento.cs
-│   │   ├── RepositorioEquipamento.cs
-│   │   └── TelaEquipamento.cs
-│   ├── Compartilhado/
-│   │   ├── EntidadeBase.cs
-│   │   ├── RepositorioBase.cs
-│   │   └── TelaBase.cs
-│   └── Program.cs
-└── README.md
+└── GestaoDeEquipamentos.WebApp/
+    ├── Compartilhado/
+    │   ├── Apresentacao/
+    │   │   ├── Views/
+    │   │   ├── HomeController.cs
+    │   │   └── InjecaoDeDependencia.cs
+    │   ├── Dominio/
+    │   └── Infraestrutura/
+    │       ├── Arquivos/
+    │       └── InjecaoDeDependencia.cs
+    └── Modulos/
+        ├── Chamados/
+        │   ├── Apresentacao/
+        │   │   ├── Views/
+        │   │   │   ├── Cadastrar.cshtml
+        │   │   │   ├── Detalhes.cshtml
+        │   │   │   ├── Editar.cshtml
+        │   │   │   ├── Encerrar.cshtml
+        │   │   │   ├── Excluir.cshtml
+        │   │   │   └── Listar.cshtml
+        │   │   ├── ChamadoController.cs
+        │   │   └── ChamadoViewModels.cs
+        │   ├── Dominio/
+        │   │   └── Chamado.cs
+        │   └── Infraestrutura/
+        │       └── RepositorioChamadoEmArquivo.cs
+        ├── Equipamentos/
+        │   ├── Apresentacao/
+        │   │   ├── Views/
+        │   │   ├── EquipamentoController.cs
+        │   │   └── EquipamentoViewModels.cs
+        │   ├── Dominio/
+        │   │   └── Equipamento.cs
+        │   └── Infraestrutura/
+        │       └── RepositorioEquipamentoEmArquivo.cs
+        └── Fabricantes/
+            ├── Apresentacao/
+            │   ├── Views/
+            │   ├── FabricanteController.cs
+            │   └── FabricanteViewModels.cs
+            ├── Dominio/
+            │   └── Fabricante.cs
+            └── Infraestrutura/
+                └── RepositorioFabricanteEmArquivo.cs
