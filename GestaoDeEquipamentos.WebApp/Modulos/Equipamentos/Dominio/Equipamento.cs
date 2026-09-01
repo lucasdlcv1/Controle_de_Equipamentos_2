@@ -10,13 +10,13 @@ public sealed class Equipamento : EntidadeBase
 
     public Fabricante Fabricante { get; set; } = null!;
 
-    public string Preco { get; set; } = string.Empty;
+    public decimal Preco { get; set; } = 0m;
 
-    public DateTime DataFabricacao { get; set; } = default;
+    public DateOnly DataFabricacao { get; set; } = default;
 
     public Equipamento() { }
 
-    public Equipamento(string nome, Fabricante fabricante, string preco, DateTime datafabricacao) : this()
+    public Equipamento(string nome, Fabricante fabricante, decimal preco, DateOnly datafabricacao) : this()
     {
         Nome = nome;
         Fabricante = fabricante;

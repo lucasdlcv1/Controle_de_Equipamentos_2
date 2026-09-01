@@ -1,0 +1,64 @@
+@model DetalhesChamadoViewModel
+
+@{
+    Layout = "_Layout";
+    ViewBag.Titulo = "Detalhes do Chamado";
+}
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">@Model.Titulo</h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6 class="text-muted">ID do Chamado</h6>
+                        <p class="h5">@Model.Id</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-muted">Equipamento</h6>
+                        <p class="h5">@Model.NomeEquipamento</p>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <h6 class="text-muted">Data de Abertura</h6>
+                        <p class="h5">@Model.DataAbertura.ToString("dd/MM/yyyy HH:mm")</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-muted">Data de Encerramento</h6>
+                        @if (Model.DataFechamento.HasValue)
+                        {
+                            <p class="h5 text-success">@Model.DataFechamento.Value.ToString("dd/MM/yyyy HH:mm")</p>
+                        }
+                        else
+                        {
+                            <p class="h5 text-warning">Não encerrado</p>
+                        }
+                    </div>
+                </div>
+
+                <hr>
+
+                <h5 class="mb-3">Descrição</h5>
+                <div class="alert alert-light" style="white-space: pre-wrap; word-wrap: break-word;">
+                    @Model.Descricao
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <a class="btn btn-primary" asp-action="Editar" asp-route-id="@Model.Id">
+                        <i class="bi bi-pencil"></i>
+                        Editar
+                    </a>
+                    <a class="btn btn-outline-secondary" asp-action="Listar">
+                        <i class="bi bi-arrow-return-left"></i>
+                        Voltar para a lista
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

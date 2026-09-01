@@ -85,12 +85,6 @@ public sealed class ContextoJson
 
         });
 
-        contextoPredefinido.Chamados.AddRange(new List<Chamado>
-        {
-            new Chamado("Problema com mouse", "Mouse não responde a cliques", DateTime.Now) { Id = 1 },
-            new Chamado("Teclado com teclas quebradas", "Várias teclas do teclado estão com defeito", DateTime.Now) { Id = 2 }
-        });
-
         return contextoPredefinido;
     }
 

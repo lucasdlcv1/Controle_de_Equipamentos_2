@@ -37,3 +37,14 @@ public record EditarChamadoViewModel(
 };
 
 public record ExcluirChamadoViewModel(int Id, string Titulo, string Descricao);
+
+public record EncerrarChamadoViewModel(int Id, string Titulo, string NomeEquipamento, DateTime DataAbertura);
+
+public record DetalhesChamadoViewModel(
+    int Id,
+    string Titulo,
+    string NomeEquipamento,
+    string Descricao,
+    DateTime DataAbertura,
+    DateTime? DataFechamento
+);

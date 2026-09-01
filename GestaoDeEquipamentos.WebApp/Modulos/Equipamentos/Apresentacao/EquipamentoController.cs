@@ -42,10 +42,10 @@ public sealed class EquipamentoController : Controller
     {
         CadastrarEquipamentoViewModel viewModel = new CadastrarEquipamentoViewModel(
             string.Empty,
-            string.Empty,
-            string.Empty,
             0,
-            DateTime.MinValue
+            0m,
+            DateOnly.MinValue,
+            string.Empty
         ) with
         { Fabricante = ObterFabricantes() };
 
@@ -55,12 +55,10 @@ public sealed class EquipamentoController : Controller
     [HttpPost]
     public ActionResult Cadastrar(CadastrarEquipamentoViewModel viewModel)
     {
-        Fabricante? fabricante = repositorioFabricante.SelecionarPorId(viewModel.FabricanteId);
+        if (!ModelState.IsValid)
+            return View(viewModel);
 
-        if (fabricante == null)
-        {
-            return NotFound();
-        }
+        Fabricante? fabricante = repositorioFabricante.SelecionarPorId(viewModel.FabricanteId);
 
         Equipamento equipamento = new Equipamento(
             viewModel.Nome ?? string.Empty,
@@ -87,10 +85,11 @@ public sealed class EquipamentoController : Controller
         EditarEquipamentoViewModel viewModel = new EditarEquipamentoViewModel(
             equipamento.Id,
             equipamento.Nome,
-            equipamento.Fabricante.Nome,
-            equipamento.Preco,
             equipamento.Fabricante.Id,
-            equipamento.DataFabricacao
+            equipamento.Preco,
+             equipamento.DataFabricacao,
+            equipamento.Fabricante.Nome
+
         ) with
         { Fabricante = ObterFabricantes() };
 
@@ -100,6 +99,9 @@ public sealed class EquipamentoController : Controller
     [HttpPost]
     public ActionResult Editar(EditarEquipamentoViewModel viewModel)
     {
+        if (!ModelState.IsValid)
+            return View(viewModel);
+
         Fabricante? fabricante = repositorioFabricante.SelecionarPorId(viewModel.FabricanteId);
 
         if (fabricante == null)
@@ -120,7 +122,6 @@ public sealed class EquipamentoController : Controller
         {
             return NotFound();
         }
-
 
         return RedirectToAction(nameof(Listar));
     }

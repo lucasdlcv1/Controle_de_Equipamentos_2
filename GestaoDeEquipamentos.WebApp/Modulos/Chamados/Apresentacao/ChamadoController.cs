@@ -39,6 +39,28 @@ public sealed class ChamadoController : Controller
     }
 
     [HttpGet]
+    public ActionResult Detalhes(int id)
+    {
+        Chamado? chamado = repositorio.SelecionarPorId(id);
+
+        if (chamado == null)
+        {
+            return NotFound();
+        }
+
+        DetalhesChamadoViewModel viewModel = new DetalhesChamadoViewModel(
+            chamado.Id,
+            chamado.Titulo,
+            chamado.Equipamento.Nome,
+            chamado.Descricao,
+            chamado.DataAbertura,
+            chamado.DataFechamento
+        );
+
+        return View(viewModel);
+    }
+
+    [HttpGet]
 
     public ActionResult Cadastrar()
     {
@@ -147,6 +169,54 @@ public sealed class ChamadoController : Controller
         );
 
         return View(viewModel);
+    }
+
+    [HttpGet]
+    public ActionResult Encerrar(int id)
+    {
+        Chamado? chamado = repositorio.SelecionarPorId(id);
+
+        if (chamado == null)
+        {
+            return NotFound();
+        }
+
+        if (chamado.DataFechamento != null)
+        {
+            return BadRequest("Este chamado já foi encerrado.");
+        }
+
+        EncerrarChamadoViewModel viewModel = new EncerrarChamadoViewModel(
+            chamado.Id,
+            chamado.Titulo,
+            chamado.Equipamento.Nome,
+            chamado.DataAbertura
+        );
+
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    [ActionName("Encerrar")]
+    public ActionResult ConfirmarEncerramento(int id)
+    {
+        Chamado? chamado = repositorio.SelecionarPorId(id);
+
+        if (chamado == null)
+        {
+            return NotFound();
+        }
+
+        chamado.DataFechamento = DateTime.Now;
+
+        bool conseguiuEditar = repositorio.Editar(id, chamado);
+
+        if (!conseguiuEditar)
+        {
+            return NotFound();
+        }
+
+        return RedirectToAction(nameof(Listar));
     }
 
 

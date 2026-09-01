@@ -25,18 +25,32 @@ else
         {
             <div class="col">
                 <div class="card h-100">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <h5>@chamado.Titulo</h5>
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <a href="@Url.Action("Detalhes", new { id = chamado.Id })" class="text-decoration-none">
+                                <h5 class="mb-0">@chamado.Titulo</h5>
+                            </a>
                             <span class="badge text-bg-secondary">@chamado.Id</span>
                         </div>
 
-                        <dl class="row mb-2">
-                            <dt class="col-sm-5">Equipamento</dt>
-                            <dd class="col-sm-9">@chamado.NomeEquipamento</dd>
+                        <dl class="row mb-3">
+                            <dt class="col-sm-6">Equipamento</dt>
+                            <dd class="col-sm-6">@chamado.NomeEquipamento</dd>
 
-                            <dt class="col-sm-5">Data de Abertura</dt>
-                            <dd class="col-sm-9">@chamado.DataAbertura.ToString("dd/MM/yyyy")</dd>
+                            <dt class="col-sm-6">Abertura:</dt>
+                            <dd class="col-sm-6">@chamado.DataAbertura.ToString("dd/MM/yyyy")</dd>
+
+                            <dt class="col-sm-6">Encerramento:</dt>
+                            <dd class="col-sm-6">
+                                @if (chamado.DataFechamento.HasValue)
+                                {
+                                    @chamado.DataFechamento.Value.ToString("dd/MM/yyyy")
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Não encerrado</span>
+                                }
+                            </dd>
                         </dl>
 
                         <div class="d-flex gap-2 justify-content-end mt-auto">
@@ -44,6 +58,17 @@ else
                                asp-route-id="@chamado.Id">
                                 <i class="bi bi-pencil"></i>
                             </a>
+                            @if (chamado.DataFechamento == null)
+                            {
+                                <a class="btn btn-sm btn-outline-success" title="Encerrar" asp-action="Encerrar"
+                                   asp-route-id="@chamado.Id">
+                                    <i class="bi bi-check-circle"></i>
+                                </a>
+                            }
+                            else
+                            {
+                                <span class="badge text-bg-success align-self-end">Encerrado</span>
+                            }
                             <a class="btn btn-sm btn-outline-danger" title="Excluir" asp-action="Excluir"
                                asp-route-id="@chamado.Id">
                                 <i class="bi bi-trash3"></i>
