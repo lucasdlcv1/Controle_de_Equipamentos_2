@@ -1,3 +1,7 @@
+using GestaoDeEquipamentos.WebApp.Modulos.Fabricantes.Infraestrutura;
+using GestaoDeEquipamentos.WebApp.Modulos.Equipamentos.Infraestrutura;
+using GestaoDeEquipamentos.WebApp.Modulos.Chamados.Infraestrutura;
+
 namespace GestaoDeEquipamentos.WebApp.Compartilhado.Apresesntacao;
 
 public static class InjecaoDeDependencia
@@ -16,5 +20,9 @@ public static class InjecaoDeDependencia
             // Configura localização das views de módulos
             options.ViewLocationFormats.Add("/Modulos/{1}s/Apresentacao/Views/{0}.cshtml");
         });
+
+        services.AddScoped<RepositorioFabricanteEmArquivo>();
+        services.AddScoped<RepositorioEquipamentoEmArquivo>();
+        services.AddScoped<RepositorioChamadoEmArquivo>();
     }
 }
