@@ -1,7 +1,6 @@
 # 🛠️ Gestão de Equipamentos - Academia do Programador 2026
 
-![C#](https://img.shields.io/badge/C%23-.NET%208.0-blueviolet?style=for-the-badge&logo=csharp)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![C#](https://img.shields.io/badge/C%23-.NET%2010.0-blueviolet?style=for-the-badge&logo=csharp)
 ![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen?style=for-the-badge)
 
 > Sistema de controle de inventário e gestão de equipamentos e fabricantes, desenvolvido para automatizar e otimizar processos de controle interno de estoque e manutenção.
@@ -35,7 +34,7 @@ O objetivo principal é solucionar a necessidade do funcionário **Junior**, que
 
 ## 🛠️ Tecnologias e Conceitos Utilizados
 
-- **Linguagem:** C# (.NET 8.0)
+- **Linguagem:** C# (.NET 10.0)
 - **Paradigma:** Programação Orientada a Objetos (POO)
 - **Arquitetura:** Camadas bem definidas (Domínio, Repositório e Tela/Apresentação)
 - **Estrutura de Dados:** Listas/Coleções dinâmicas para manipulação em memória
