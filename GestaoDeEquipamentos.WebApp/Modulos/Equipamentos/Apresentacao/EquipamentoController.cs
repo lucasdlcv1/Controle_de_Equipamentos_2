@@ -55,8 +55,6 @@ public sealed class EquipamentoController : Controller
     [HttpPost]
     public ActionResult Cadastrar(CadastrarEquipamentoViewModel viewModel)
     {
-        if (!ModelState.IsValid)
-            return View(viewModel);
 
         Fabricante? fabricante = repositorioFabricante.SelecionarPorId(viewModel.FabricanteId);
 
@@ -99,9 +97,6 @@ public sealed class EquipamentoController : Controller
     [HttpPost]
     public ActionResult Editar(EditarEquipamentoViewModel viewModel)
     {
-        if (!ModelState.IsValid)
-            return View(viewModel);
-
         Fabricante? fabricante = repositorioFabricante.SelecionarPorId(viewModel.FabricanteId);
 
         if (fabricante == null)
