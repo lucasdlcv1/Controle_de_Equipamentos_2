@@ -11,6 +11,10 @@
 
 Este projeto foi desenvolvido como parte do treinamento da **[Academia do Programador (Back-End 2026)](https://www.academiadoprogramador.net)**. 
 
+O projeto foi hospedado na Azure e pode ser acessado pelo link:
+
+https://controle-de-equipamentos-ap-bfgbggh9bpejg3ha.mexicocentral-01.azurewebsites.net/
+
 O objetivo principal é solucionar a necessidade do funcionário **Junior**, que necessitava de uma aplicação robusta e estruturada para substituir o controle manual feito em planilhas do Excel. A aplicação gerencia o ciclo de vida completo dos **Fabricantes** e dos **Equipamentos** em estoque.
 
 ---
