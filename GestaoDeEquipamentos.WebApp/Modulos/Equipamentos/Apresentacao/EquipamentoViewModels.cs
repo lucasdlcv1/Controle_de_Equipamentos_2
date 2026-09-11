@@ -11,7 +11,7 @@ public record ListarEquipamentoViewModel(
     string Nome,
     string NomeFabricante,
     decimal Preco,
-    DateOnly DataFabricacao
+    DateTime DataFabricacao
 
 );
 
@@ -29,7 +29,7 @@ public record CadastrarEquipamentoViewModel(
     [Range(0.01, double.MaxValue, ErrorMessage = "O campo \"Preço\" deve ser maior que zero.")]
     decimal Preco,
 
-    DateOnly DataFabricacao,
+    DateTime DataFabricacao,
     string NomeFabricante
 )
 {
@@ -52,7 +52,7 @@ public record EditarEquipamentoViewModel(
     [Range(0.01, double.MaxValue, ErrorMessage = "O campo \"Preço\" deve ser maior que zero.")]
     decimal Preco,
 
-    DateOnly DataFabricacao,
+    DateTime DataFabricacao,
     string NomeFabricante
 )
 {
