@@ -1,6 +1,6 @@
 using System;
 
-namespace GestaoDeEquipamentos.WebApp.Dominio;
+namespace GestaoDeEquipamentos.WebApp.Compartilhado.Dominio;
 
 public abstract class EntidadeBase
 {

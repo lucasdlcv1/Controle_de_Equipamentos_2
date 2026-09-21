@@ -1,5 +1,5 @@
 
-using GestaoDeEquipamentos.WebApp.Dominio;
+using GestaoDeEquipamentos.WebApp.Compartilhado.Dominio;
 using GestaoDeEquipamentos.WebApp.Modulos.Fabricantes.Dominio;
 
 namespace GestaoDeEquipamentos.WebApp.Modulos.Equipamentos.Dominio;
@@ -10,17 +10,17 @@ public sealed class Equipamento : EntidadeBase
 
     public Fabricante Fabricante { get; set; } = null!;
 
-    public decimal Preco { get; set; } = 0m;
+    public decimal PrecoAquisicao { get; set; } = 0m;
 
-    public DateOnly DataFabricacao { get; set; } = default;
+    public DateTime DataFabricacao { get; set; } = default;
 
     public Equipamento() { }
 
-    public Equipamento(string nome, Fabricante fabricante, decimal preco, DateOnly datafabricacao) : this()
+    public Equipamento(string nome, Fabricante fabricante, decimal preco, DateTime datafabricacao) : this()
     {
         Nome = nome;
         Fabricante = fabricante;
-        Preco = preco;
+        PrecoAquisicao = preco;
         DataFabricacao = datafabricacao;
     }
 
@@ -30,7 +30,7 @@ public sealed class Equipamento : EntidadeBase
 
         Nome = equipamentoAtualizado.Nome;
         Fabricante = equipamentoAtualizado.Fabricante;
-        Preco = equipamentoAtualizado.Preco;
+        PrecoAquisicao = equipamentoAtualizado.PrecoAquisicao;
         DataFabricacao = equipamentoAtualizado.DataFabricacao;
     }
 }

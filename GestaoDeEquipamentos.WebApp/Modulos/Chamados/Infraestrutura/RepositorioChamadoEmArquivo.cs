@@ -1,4 +1,4 @@
-using GestaoDeEquipamentos.WebApp.Dominio;
+using GestaoDeEquipamentos.WebApp.Compartilhado.Dominio;
 using GestaoDeEquipamentos.WebApp.Modulos.Equipamentos.Dominio;
 using GestaoDeEquipamentos.WebApp.Compartilhado.Infraestrutura.Arquivos;
 using GestaoDeEquipamentos.WebApp.Modulos.Chamados.Dominio;

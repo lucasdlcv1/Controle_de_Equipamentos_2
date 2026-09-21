@@ -9,10 +9,10 @@ namespace GestaoDeEquipamentos.WebApp.Modulos.Equipamentos.Apresentacao;
 
 public sealed class EquipamentoController : Controller
 {
-    private readonly RepositorioEquipamentoEmArquivo repositorio;
-    private readonly RepositorioFabricanteEmArquivo repositorioFabricante;
+    private readonly IRepositorioEquipamento repositorio;
+    private readonly IRepositorioFabricante repositorioFabricante;
 
-    public EquipamentoController(RepositorioEquipamentoEmArquivo repositorio, RepositorioFabricanteEmArquivo repositorioFabricante)
+    public EquipamentoController(IRepositorioEquipamento repositorio, IRepositorioFabricante repositorioFabricante)
     {
         this.repositorio = repositorio;
         this.repositorioFabricante = repositorioFabricante;
@@ -23,13 +23,15 @@ public sealed class EquipamentoController : Controller
     {
         List<ListarEquipamentoViewModel> viewModels = new List<ListarEquipamentoViewModel>();
 
-        foreach (Equipamento equipamento in repositorio.SelecionarTodos())
+        List<Equipamento> equipamentos = repositorio.SelecionarTodos();
+
+        foreach (Equipamento equipamento in equipamentos)
         {
             viewModels.Add(new ListarEquipamentoViewModel(
                 equipamento.Id,
                 equipamento.Nome,
                 equipamento.Fabricante.Nome,
-                equipamento.Preco,
+                equipamento.PrecoAquisicao,
                 equipamento.DataFabricacao
             ));
         }
@@ -44,7 +46,7 @@ public sealed class EquipamentoController : Controller
             string.Empty,
             0,
             0m,
-            DateOnly.MinValue,
+            DateTime.MinValue,
             string.Empty
         ) with
         { Fabricante = ObterFabricantes() };
@@ -84,7 +86,7 @@ public sealed class EquipamentoController : Controller
             equipamento.Id,
             equipamento.Nome,
             equipamento.Fabricante.Id,
-            equipamento.Preco,
+            equipamento.PrecoAquisicao,
              equipamento.DataFabricacao,
             equipamento.Fabricante.Nome
 
